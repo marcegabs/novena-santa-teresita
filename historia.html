@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Historia de Santa Teresita</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Karla:wght@400;600;700&display=swap">
+<style>
+/* Same family as the novena page: blush-to-peach ground, white glass cards,
+   serif display with italic emphasis, one rose accent. */
+:root {
+  --ink: #3b2530;
+  --muted: #866a76;
+  --glass: rgba(255, 255, 255, 0.66);
+  --white: #ffffff;
+  --rose: #b4476a;
+  --rose-deep: #7f2842;
+  --line: rgba(127, 40, 66, 0.14);
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --text: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--text);
+  line-height: 1.65;
+  background:
+    radial-gradient(60% 40% at 15% 0%, rgba(255, 255, 255, 0.95), transparent 70%),
+    radial-gradient(70% 45% at 100% 20%, #f7d3dc 0%, transparent 70%),
+    radial-gradient(80% 50% at 0% 70%, #fbd9c6 0%, transparent 75%),
+    linear-gradient(180deg, #fdf9f9 0%, #f8e7ea 45%, #fbdcd2 100%);
+  background-attachment: fixed;
+  min-height: 100%;
+}
+.wrap {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding-inline: 1rem;
+  padding-block: 0.6rem 4rem;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.5rem 1.6rem;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--rose-deep);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.back:active { transform: scale(0.96); }
+.brand {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+.hero { text-align: center; padding-block: 0.6rem 2.2rem; }
+.kicker {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+}
+.arch {
+  display: block;
+  width: min(12rem, 58%);
+  height: auto;
+  margin: 0 auto 1.2rem;
+  border-radius: 999px 999px 18px 18px;
+  border: 6px solid var(--white);
+  box-shadow: 0 16px 40px -18px rgba(127, 40, 66, 0.45);
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 2.6rem;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+h1 em { font-style: italic; color: var(--rose-deep); }
+.lede {
+  margin: 1rem auto 0;
+  max-width: 26rem;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  padding: 1.45rem 1.35rem 1.55rem;
+  margin-block: 0 1.2rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 14px 40px -26px rgba(127, 40, 66, 0.35);
+  min-width: 0;
+}
+h2 {
+  margin: 0 0 0.7rem;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.85rem;
+  line-height: 1.1;
+  color: var(--rose-deep);
+}
+h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+p { margin: 0 0 0.9rem; }
+p:last-child { margin-bottom: 0; }
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.timeline li {
+  display: grid;
+  grid-template-columns: 5.2rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+.timeline li:first-child { border-top: 0; padding-top: 0; }
+.year {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--rose-deep);
+  font-variant-numeric: tabular-nums;
+}
+.timeline p { margin: 0; font-size: 0.95rem; }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.4rem;
+}
+.fact {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 0.9rem 0.95rem;
+  min-width: 0;
+}
+.fact strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.fact span { font-size: 0.82rem; color: var(--muted); }
+
+.quote {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: rgba(127, 40, 66, 0.07);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--rose-deep);
+}
+
+.foot {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+.foot a {
+  color: var(--rose-deep);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.3rem 0.2rem;
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card, .hero { animation: rise 900ms cubic-bezier(0.32, 0.72, 0, 1) both; }
+  .card:nth-of-type(2) { animation-delay: 80ms; }
+  .card:nth-of-type(3) { animation-delay: 160ms; }
+  .card:nth-of-type(4) { animation-delay: 240ms; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="topbar">
+    <a class="back" id="back" href="index.html">← Volver a la novena</a>
+    <span class="brand">Novena</span>
+  </header>
+
+  <section class="hero">
+    <img class="arch" src="teresa.png" alt="Santa Teresita del Niño Jesús con un crucifijo y un ramo de rosas" width="420" height="583">
+    <p class="kicker">Conoce a su historia</p>
+    <h1>Santa Teresita <em>del Niño Jesús</em></h1>
+    <p class="lede">Nació en Alençon, Francia, el 2 de enero de 1873, y murió en Lisieux el 30 de septiembre de 1897, a los 24 años. Su vida breve dejó una enseñanza que hoy conoce el mundo entero: la santidad está al alcance de los gestos sencillos hechos con amor.</p>
+  </section>
+
+  <section class="card">
+    <h2>Su familia</h2>
+    <p>Fue la menor de nueve hijos de Luis Martin y Celia Guérin, un matrimonio que más tarde fue canonizado. Su madre murió de cáncer de mama cuando Teresa tenía cuatro años, y desde entonces creció muy unida a su padre y a sus hermanas mayores.</p>
+    <p>Varias de sus hermanas mayores entraron como religiosas al Carmelo de Lisieux. Teresa las siguió con apenas 15 años.</p>
+  </section>
+
+  <section class="card">
+    <h2>Su camino</h2>
+    <ol class="timeline">
+      <li>
+        <span class="year">1888</span>
+        <p>Ingresa al Carmelo de Lisieux el 9 de abril, con 15 años.</p>
+      </li>
+      <li>
+        <span class="year">1890</span>
+        <p>Hace su profesión religiosa el 8 de septiembre.</p>
+      </li>
+      <li>
+        <span class="year">1896</span>
+        <p>Comienzan sus primeras hemorragias pulmonares. Ese mismo año vive la llamada noche de la fe, un tiempo de gran oscuridad interior.</p>
+      </li>
+      <li>
+        <span class="year">1897</span>
+        <p>Le diagnostican tuberculosis avanzada. Muere el 30 de septiembre, a los 24 años. Antes había escrito que quería pasar su cielo haciendo el bien en la tierra.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Historia de un alma</h2>
+    <p>Su autobiografía fue escrita por orden de sus superioras. Se publicó un año después de su muerte y se ha traducido a más de cuarenta idiomas. En ella describe su "pequeño camino", una manera de amar a Dios en lo cotidiano, con humildad y confianza.</p>
+    <p class="quote">Quiero pasar mi cielo haciendo el bien sobre la tierra.</p>
+  </section>
+
+  <section class="card">
+    <h2>Su reconocimiento</h2>
+    <div class="facts">
+      <div class="fact"><strong>1923</strong><span>Beatificada por Pío XI</span></div>
+      <div class="fact"><strong>1925</strong><span>Canonizada por Pío XI</span></div>
+      <div class="fact"><strong>1997</strong><span>Proclamada doctora de la Iglesia</span></div>
+      <div class="fact"><strong>Patrona</strong><span>De las misiones, junto a san Francisco Javier</span></div>
+    </div>
+    <p style="margin-top:1rem">Juan Pablo II la llamó "Doctora del Amor" y la reconoció como la tercera mujer en recibir el título de doctora de la Iglesia.</p>
+  </section>
+
+  <p class="foot"><a id="back2" href="index.html">← Volver a la novena</a></p>
+</main>
+
+<script>
+/* Go back to the previous page when there is one, otherwise open the novena. */
+function goBack(ev) {
+  if (window.history.length > 1) {
+    ev.preventDefault();
+    window.history.back();
+  }
+}
+document.getElementById("back").addEventListener("click", goBack);
+document.getElementById("back2").addEventListener("click", goBack);
+</script>
+</body>
+</html>

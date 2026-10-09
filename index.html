@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Novena a Santa Teresita</title>
+<meta name="theme-color" content="#fbeef0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Karla:wght@400;600;700&display=swap">
+<style>
+/* Direction: soft blush-to-peach gradient with fine grain (Dear Me),
+   grainy rose-orange-lilac hero card (Gretes), white pills and a white
+   floating action button. Serif display with italic emphasis. */
+:root {
+  --ink: #3b2530;
+  --muted: #866a76;
+  --glass: rgba(255, 255, 255, 0.62);
+  --white: #ffffff;
+  --rose: #b4476a;
+  --rose-deep: #7f2842;
+  --line: rgba(127, 40, 66, 0.12);
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --text: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+/* Native-feel baseline: no grey tap flash, no page bounce, no zoom on focus */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+}
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--text);
+  background:
+    radial-gradient(60% 40% at 15% 0%, rgba(255, 255, 255, 0.95), transparent 70%),
+    radial-gradient(70% 45% at 100% 20%, #f7d3dc 0%, transparent 70%),
+    radial-gradient(80% 50% at 0% 70%, #fbd9c6 0%, transparent 75%),
+    linear-gradient(180deg, #fdf9f9 0%, #f8e7ea 45%, #fbdcd2 100%);
+  background-attachment: fixed;
+  min-height: 100%;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding-inline: 1rem;
+  padding-block: 0.5rem 8.5rem;
+  font-size: calc(16px * var(--scale, 1));
+  line-height: 1.6;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.6rem 0.2rem;
+}
+.brand {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.avatar {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--white);
+  box-shadow: 0 2px 10px rgba(127, 40, 66, 0.15);
+}
+.hero { text-align: center; padding-block: 2.2rem 1.2rem; }
+.kicker {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+}
+.arch {
+  display: block;
+  width: min(13.5rem, 62%);
+  height: auto;
+  margin: 0.4rem auto 1.1rem;
+  border-radius: 999px 999px 18px 18px;
+  border: 6px solid var(--white);
+  box-shadow: 0 16px 40px -18px rgba(127, 40, 66, 0.45);
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 2.55rem;
+  line-height: 1.02;
+  text-wrap: balance;
+  color: var(--ink);
+}
+h1 em { font-style: italic; color: var(--rose-deep); }
+.lede {
+  margin: 0.9rem auto 0;
+  max-width: 24rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  padding: 1.35rem;
+  margin-block: 0 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 14px 40px -26px rgba(127, 40, 66, 0.35);
+}
+label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+input[type="date"] {
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+input:focus-visible, button:focus-visible {
+  outline: 3px solid rgba(180, 71, 106, 0.35);
+  outline-offset: 2px;
+}
+.status {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--rose-deep);
+  font-weight: 600;
+}
+
+/* Entry card that links to the biography page */
+.learn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block: 0 1.2rem;
+  padding: 1.1rem 1.1rem 1.1rem 1.35rem;
+  border-radius: 24px;
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 14px 40px -26px rgba(127, 40, 66, 0.35);
+  color: var(--ink);
+  text-decoration: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.learn:active { transform: scale(0.98); }
+.learn-text { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.learn-title {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--rose-deep);
+}
+.learn-sub { font-size: 0.85rem; color: var(--muted); }
+.learn-arrow {
+  flex: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--rose-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px -8px rgba(127, 40, 66, 0.5);
+}
+/* Breathing room between the day hero and the first prayer */
+.dayhero + .section { margin-top: 1.8rem; }
+
+/* Soft entrance: sections rise and resolve to a fully visible resting state */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero, .glass { animation: rise 900ms cubic-bezier(0.32, 0.72, 0, 1) both; }
+  .glass:nth-of-type(2) { animation-delay: 80ms; }
+  .glass:nth-of-type(3) { animation-delay: 160ms; }
+}
+
+/* Day pills, in the spirit of the Letter / Ideas segment control */
+.days {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px -22px rgba(127, 40, 66, 0.5);
+}
+.days button {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  padding: 0;
+  min-width: 0;
+}
+.days button.done { color: var(--rose-deep); background: var(--rose-soft-bg, #fbe3ea); }
+.days button.today { box-shadow: inset 0 0 0 1.5px var(--rose); }
+.days button.selected { background: var(--ink); color: var(--white); }
+.days-legend {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Grainy hero card for the active day */
+.dayhero {
+  margin-block: 0 1.2rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 1.4rem 1.2rem 1.3rem;
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background:
+    radial-gradient(60% 60% at 10% 10%, #fff8f4 0%, transparent 70%),
+    radial-gradient(60% 55% at 90% 25%, #f6cad6 0%, transparent 70%),
+    radial-gradient(70% 60% at 50% 100%, #e7d6ee 0%, transparent 72%),
+    linear-gradient(160deg, #fff3ee 0%, #f9e0e5 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 24px 50px -30px rgba(127, 40, 66, 0.45);
+}
+.dayhero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.dayhero > * { position: relative; }
+.dayhero .eyebrow {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+.dayhero h2 {
+  margin: 0.2rem 0 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.3rem;
+  line-height: 1;
+  color: var(--rose-deep);
+}
+.count {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.gloria-line {
+  margin: 0.4rem 0 0;
+  font-size: 0.92rem;
+  opacity: 0.92;
+}
+.dayhero .row { margin-top: 0.6rem; }
+.dayhero .row button {
+  background: var(--white);
+  border-color: rgba(127, 40, 66, 0.25);
+  color: var(--rose-deep);
+}
+.dayhero .row button.primary {
+  background: var(--rose-deep);
+  color: var(--white);
+  border-color: var(--rose-deep);
+}
+.dayhero .row button:disabled { opacity: 0.5; }
+.jac {
+  margin: 0.8rem 0 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(127, 40, 66, 0.1);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--rose-deep);
+}
+
+.section {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  padding: 1.45rem 1.35rem 1.5rem;
+  margin-block: 0 1.2rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 14px 40px -26px rgba(127, 40, 66, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+h3 {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+.prayer {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.14rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.note {
+  margin: 0;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.msg {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.row button, .tools button {
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  padding: 0.6rem 1.05rem;
+  border: 1px solid rgba(127, 40, 66, 0.25);
+  background: var(--white);
+  color: var(--rose-deep);
+  cursor: pointer;
+}
+.row button:disabled { opacity: 0.45; cursor: default; }
+
+/* Controls: no tap delay, no long-press text selection, press feedback on pointer down */
+button, a, .days button {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1), background 220ms cubic-bezier(0.32, 0.72, 0, 1), color 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+button:active, .days button:active {
+  transform: scale(0.96);
+}
+/* Hover styles only where a real mouse exists, so taps never leave a stuck state */
+@media (hover: hover) and (pointer: fine) {
+  .row button:not(:disabled):hover, .tools button:hover { background: #fdf1f4; }
+  .days button:hover { background: rgba(255, 255, 255, 0.9); }
+}
+
+/* Floating white action, the same role as "Write the letter" in Dear Me */
+.fab {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  width: min(26rem, calc(100% - 2rem));
+  z-index: 2;
+  border: 0;
+  border-radius: 999px;
+  padding: 1rem 1.2rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 18px 40px -16px rgba(127, 40, 66, 0.5);
+  cursor: pointer;
+}
+.fab[aria-pressed="true"] { background: #fbe3ea; color: var(--rose-deep); }
+.fab:active { transform: translateX(-50%) scale(0.98); }
+
+.tools {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding-inline: 0.2rem;
+}
+.tools .group { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
+.tools .group span { font-size: 0.85rem; color: var(--muted); margin-right: 0.2rem; }
+.tools button { padding: 0.45rem 0.85rem; font-size: 0.85rem; }
+.foot {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="nav">
+    <span class="brand">Novena</span>
+    <img class="avatar" src="teresa.png" alt="Santa Teresita del Niño Jesús" width="38" height="38">
+  </header>
+
+  <section class="hero">
+    <img class="arch" src="teresa.png" alt="Santa Teresita del Niño Jesús con un crucifijo y un ramo de rosas" width="420" height="583">
+    <p class="kicker">Nueve días de oración</p>
+    <h1>Santa Teresita <em>del Niño Jesús</em></h1>
+    <p class="lede">Nueve días de oración, con veinticuatro Glorias cada día. Puedes rezarla en cualquier época, y se recomienda del 9 al 17 de cada mes.</p>
+  </section>
+
+  <a class="learn" href="historia.html">
+    <span class="learn-text">
+      <span class="learn-title">Conoce a Santa Teresita del Niño Jesús</span>
+      <span class="learn-sub">Su familia, su camino y su historia</span>
+    </span>
+    <span class="learn-arrow" aria-hidden="true">→</span>
+  </a>
+
+  <section class="glass" aria-label="Inicio de la novena">
+    <label for="start">Fecha en que empiezas</label>
+    <input id="start" type="date">
+    <p id="status" class="status" role="status"></p>
+  </section>
+
+  <section class="glass" aria-label="Días de la novena">
+    <ol id="days" class="days"></ol>
+    <p class="days-legend">Toca un día para verlo. Los llenos ya están rezados.</p>
+  </section>
+
+  <section id="day" aria-live="polite"></section>
+
+  <section class="glass tools" aria-label="Opciones de lectura">
+    <div class="group">
+      <span>Letra</span>
+      <button type="button" id="smaller" aria-label="Letra más pequeña">A−</button>
+      <button type="button" id="bigger" aria-label="Letra más grande">A+</button>
+    </div>
+    <div class="group">
+      <button type="button" id="reset">Empezar otra novena</button>
+    </div>
+  </section>
+
+  <p class="foot">Tu avance se guarda en este navegador.</p>
+</main>
+
+<button type="button" id="fab" class="fab" aria-pressed="false">Marcar día como rezado</button>
+
+<script>
+const SENAL = "Por la señal de la Santa cruz, de nuestros enemigos, líbranos, Señor, Dios nuestro. En el nombre del Padre y del Hijo y del Espíritu Santo. Amén.";
+const INICIAL = "Santísima Trinidad, Padre, Hijo y Espíritu Santo, yo te agradezco todos los favores y todas las gracias con que enriqueciste el alma de tu amiga Teresita del Niño Jesús durante los 24 años que pasó en la tierra, y por los méritos de tan querida Santita, te ruego me concedas la gracia que con fervor te pido, si es conforme a tu santa voluntad y para la salvación de mi alma.";
+const GLORIA = "Gloria al Padre, al Hijo y al Espíritu Santo, como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.";
+const JACULATORIAS = [
+  "Santa Teresita del Niño Jesús", "Florcita de Jesús", "Hija predilecta de María", "Esposa fiel de Jesús",
+  "Madre de muchas almas", "Ejemplo de santidad", "Milagro de virtudes", "Prodigio de milagros",
+  "Virgen prudente", "Heroína de la fe", "Ángel de caridad", "Violeta de humildad", "Mística pasionaria",
+  "Lirio purísimo del Carmelo", "Flor selecta de la Iglesia", "Rosa desojada de amor", "Mártir de amor",
+  "Mensajera de la Paz", "Encanto de Cielo y Tierra", "Patrona de las Misiones", "Sembradora de rosas",
+  "Maestra de la Infancia espiritual", "Abogada de los sacerdotes",
+  "Tú que pasas tu Cielo haciendo el bien en la Tierra"
+];
+const ROSA_1 = "Teresita del Niño Jesús, por favor, junta una rosa de los jardines celestiales y envíala como mensajera de amor. Florecita de Jesús, pídele hoy a Dios que me alcance las gracias que pongo con confianza en tus manos...";
+const ROSA_2 = "Santa Teresita, ayúdame a creer siempre, como lo hiciste, en el gran Amor que Dios me tiene, de modo que yo pueda imitar Tu camino de Vida. Amén.";
+const FINAL = "Santa Teresita, acuérdate de tu promesa de hacer el bien sobre la Tierra; derrama con abundancia tu lluvia de rosas sobre los que te invocamos, y alcánzanos de Dios las gracias que de su bondad infinita esperamos. Amén. Santa Teresita escucha nuestras humildes súplicas. En el nombre del Padre y del Hijo y del Espíritu Santo, amén.";
+
+const KEY = "novena-santa-teresita-v1";
+const SCALES = [0.9, 1, 1.15, 1.3];
+
+function load() {
+  try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+}
+let state = Object.assign({ start: "", days: {}, scale: 1 }, load());
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+}
+function rec(d) {
+  if (!state.days[d]) state.days[d] = { done: false, glorias: 0 };
+  return state.days[d];
+}
+function todayDay() {
+  if (!state.start) return null;
+  const s = new Date(state.start + "T00:00:00");
+  const t = new Date();
+  t.setHours(0, 0, 0, 0);
+  return Math.floor((t - s) / 86400000) + 1;
+}
+
+let view = 1;
+let resetArmed = false;
+
+const $ = (id) => document.getElementById(id);
+const startEl = $("start"), statusEl = $("status");
+const daysEl = $("days"), dayEl = $("day"), fabEl = $("fab");
+
+function renderStatus() {
+  const td = todayDay();
+  if (td === null) {
+    statusEl.textContent = "Elige la fecha en que empiezas para seguir tu avance.";
+  } else if (td < 1) {
+    const f = new Date(state.start + "T00:00:00").toLocaleDateString("es-MX", { day: "numeric", month: "long" });
+    statusEl.textContent = "Tu novena empieza el " + f + ".";
+  } else if (td > 9) {
+    statusEl.textContent = "La novena ya terminó. Puedes empezar otra cuando quieras.";
+  } else {
+    statusEl.textContent = "Hoy es el día " + td + " de 9.";
+  }
+}
+
+function renderDays() {
+  const td = todayDay();
+  daysEl.innerHTML = "";
+  for (let d = 1; d <= 9; d++) {
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.day = d;
+    b.textContent = d;
+    b.setAttribute("aria-label", "Día " + d + (rec(d).done ? ", rezado" : ""));
+    const classes = [];
+    if (rec(d).done) classes.push("done");
+    if (td === d) classes.push("today");
+    if (view === d) classes.push("selected");
+    b.className = classes.join(" ");
+    b.setAttribute("aria-current", view === d ? "step" : "false");
+    li.appendChild(b);
+    daysEl.appendChild(li);
+  }
+}
+
+function renderDay() {
+  const d = view;
+  const r = rec(d);
+  const td = todayDay();
+  const done = r.glorias >= 24;
+  const jac = done ? "" : '<p class="jac">' + JACULATORIAS[r.glorias] + ", ruega por nosotros.</p>";
+  dayEl.innerHTML =
+    '<div class="dayhero">' +
+      '<p class="eyebrow">' + (td === d ? "Hoy" : "Día " + d + " de 9") + '</p>' +
+      '<h2>Día ' + d + '</h2>' +
+    '</div>' +
+    '<div class="section"><h3>Señal de la cruz</h3><p class="prayer">' + SENAL + '</p></div>' +
+    '<div class="section"><h3>Oración inicial</h3><p class="prayer">' + INICIAL + '</p></div>' +
+    '<div class="dayhero">' +
+      '<p class="count">' + r.glorias + ' de 24 Glorias</p>' +
+      '<p class="gloria-line">' + (done ? "Las 24 Glorias están completas." : "Toca el botón para contar cada Gloria.") + '</p>' +
+      jac +
+      '<div class="row">' +
+        '<button type="button" data-action="undo"' + (r.glorias === 0 ? ' disabled' : '') + '>Deshacer</button>' +
+        '<button type="button" class="primary" data-action="gloria"' + (done ? ' disabled' : '') + '>Rezé una Gloria</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="section"><h3>Gloria</h3><p class="prayer">' + GLORIA + '</p></div>' +
+    '<div class="section"><h3>Oración para pedir la rosa</h3>' +
+      '<p class="prayer">' + ROSA_1 + '</p>' +
+      '<p class="note">Aquí pide tu gracia.</p>' +
+      '<p class="prayer">' + ROSA_2 + '</p>' +
+    '</div>' +
+    '<div class="section"><h3>Oración final</h3><p class="prayer">' + FINAL + '</p></div>' +
+    '<div class="row"><button type="button" data-action="copy">Copiar oraciones</button></div>' +
+    '<p class="msg" id="msg" role="status"></p>';
+}
+
+function renderFab() {
+  const r = rec(view);
+  fabEl.textContent = r.done ? "Día rezado" : "Marcar día como rezado";
+  fabEl.setAttribute("aria-pressed", String(r.done));
+}
+
+function renderAll() {
+  renderStatus();
+  renderDays();
+  renderDay();
+  renderFab();
+  document.querySelector(".wrap").style.setProperty("--scale", SCALES[state.scale] ?? 1);
+  startEl.value = state.start;
+}
+
+function msg(text) {
+  const m = $("msg");
+  if (m) m.textContent = text;
+}
+
+startEl.addEventListener("change", () => {
+  state.start = startEl.value;
+  const td = todayDay();
+  view = td === null ? 1 : Math.min(9, Math.max(1, td));
+  save();
+  renderAll();
+});
+
+daysEl.addEventListener("click", (ev) => {
+  const b = ev.target.closest("button[data-day]");
+  if (!b) return;
+  view = Number(b.dataset.day);
+  renderAll();
+});
+
+dayEl.addEventListener("click", (ev) => {
+  const b = ev.target.closest("button[data-action]");
+  if (!b) return;
+  const r = rec(view);
+  const action = b.dataset.action;
+  if (action === "gloria") {
+    if (r.glorias < 24) r.glorias++;
+    save();
+    renderAll();
+    if (r.glorias === 24) msg("Completaste las 24 Glorias.");
+  } else if (action === "undo") {
+    if (r.glorias > 0) r.glorias--;
+    save();
+    renderAll();
+  } else if (action === "copy") {
+    const text = [SENAL, INICIAL, ROSA_1 + " " + ROSA_2, FINAL].join("\n\n");
+    const ok = () => msg("Oraciones copiadas.");
+    const fail = () => msg("No se pudo copiar. Selecciona el texto y cópialo.");
+    try {
+      navigator.clipboard.writeText(text).then(ok, fail);
+    } catch (e) {
+      fail();
+    }
+  }
+});
+
+fabEl.addEventListener("click", () => {
+  const r = rec(view);
+  r.done = !r.done;
+  save();
+  renderAll();
+  msg(r.done ? "Día marcado como rezado." : "Marca quitada.");
+});
+
+$("smaller").addEventListener("click", () => {
+  state.scale = Math.max(0, state.scale - 1);
+  save();
+  renderAll();
+});
+$("bigger").addEventListener("click", () => {
+  state.scale = Math.min(SCALES.length - 1, state.scale + 1);
+  save();
+  renderAll();
+});
+
+$("reset").addEventListener("click", (ev) => {
+  const b = ev.currentTarget;
+  if (!resetArmed) {
+    resetArmed = true;
+    b.textContent = "Toca de nuevo para borrar el avance";
+    setTimeout(() => { resetArmed = false; b.textContent = "Empezar otra novena"; }, 4000);
+    return;
+  }
+  resetArmed = false;
+  state.start = "";
+  state.days = {};
+  save();
+  view = 1;
+  b.textContent = "Empezar otra novena";
+  renderAll();
+});
+
+(function init() {
+  const td = todayDay();
+  view = td === null ? 1 : Math.min(9, Math.max(1, td));
+  renderAll();
+})();
+</script>
+</body>
+</html>
