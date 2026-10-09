@@ -4,8 +4,8 @@ Página sencilla para rezar la novena a Santa Teresita del Niño Jesús desde el
 
 ## Contenido
 
-- `index.html`: la novena. Tracker de 9 días, contador de Glorias, oraciones de cada día y botón para marcar el día como rezado.
-- `historia.html`: la historia de Santa Teresita, con un botón para volver a la novena.
+- `index.html`: la novena. Tracker de 9 días, contador de Glorias, oraciones de cada día, botón para marcar el día como rezado, controles de tamaño de letra y botón para compartir la novena (hoja nativa del celular o WhatsApp).
+- `historia.html`: la historia de Santa Teresita, con un episodio de podcast en Spotify y un botón para volver a la novena.
 - `teresa.png`: imagen usada en ambas páginas.
 
 ## Cómo verla

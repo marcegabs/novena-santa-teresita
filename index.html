@@ -24,6 +24,7 @@
 }
 /* Native-feel baseline: no grey tap flash, no page bounce, no zoom on focus */
 html {
+  font-size: calc(16px * var(--scale, 1));
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   overscroll-behavior: none;
@@ -56,7 +57,6 @@ body::after {
   margin: 0 auto;
   padding-inline: 1rem;
   padding-block: 0.5rem 8.5rem;
-  font-size: calc(16px * var(--scale, 1));
   line-height: 1.6;
 }
 .nav {
@@ -131,27 +131,42 @@ h1 em { font-style: italic; color: var(--rose-deep); }
   flex-direction: column;
   gap: 0.6rem;
   min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   backdrop-filter: blur(14px) saturate(120%);
   -webkit-backdrop-filter: blur(14px) saturate(120%);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 14px 40px -26px rgba(127, 40, 66, 0.35);
 }
+.glass > * { min-width: 0; max-width: 100%; }
 label {
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--muted);
 }
-input[type="date"] {
+/* Date field: stays inside its card at any width; 16px text so iOS does not zoom */
+input#start {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 3rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
   font: inherit;
   font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
   color: var(--ink);
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.7rem 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  min-width: 0;
 }
+/* iOS Safari centers and sizes the inner date value on its own */
+input#start::-webkit-date-and-time-value { text-align: left; min-width: 0; }
+input#start::-webkit-datetime-edit { padding: 0; }
 input:focus-visible, button:focus-visible {
   outline: 3px solid rgba(180, 71, 106, 0.35);
   outline-offset: 2px;
@@ -383,7 +398,7 @@ h3 {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-.row button, .tools button {
+.row button, .tools button, .share {
   font: inherit;
   font-weight: 700;
   font-size: 0.9rem;
@@ -409,7 +424,7 @@ button:active, .days button:active {
 }
 /* Hover styles only where a real mouse exists, so taps never leave a stuck state */
 @media (hover: hover) and (pointer: fine) {
-  .row button:not(:disabled):hover, .tools button:hover { background: #fdf1f4; }
+  .row button:not(:disabled):hover, .tools button:hover, .share:hover { background: #fdf1f4; }
   .days button:hover { background: rgba(255, 255, 255, 0.9); }
 }
 
@@ -450,6 +465,19 @@ button:active, .days button:active {
 .tools .group { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
 .tools .group span { font-size: 0.85rem; color: var(--muted); margin-right: 0.2rem; }
 .tools button { padding: 0.45rem 0.85rem; font-size: 0.85rem; }
+/* Share sits on its own line under the reading controls, full width for an easy tap */
+.share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-basis: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.75rem 1.05rem;
+}
+.share:active { transform: scale(0.96); }
 .foot {
   text-align: center;
   color: var(--muted);
@@ -502,6 +530,7 @@ button:active, .days button:active {
     <div class="group">
       <button type="button" id="reset">Empezar otra novena</button>
     </div>
+    <a id="share" class="share" href="https://wa.me/" target="_blank" rel="noopener">Compartir novena</a>
   </section>
 
   <p class="foot">Tu avance se guarda en este navegador.</p>
@@ -619,7 +648,6 @@ function renderDay() {
       '<p class="prayer">' + ROSA_2 + '</p>' +
     '</div>' +
     '<div class="section"><h3>Oración final</h3><p class="prayer">' + FINAL + '</p></div>' +
-    '<div class="row"><button type="button" data-action="copy">Copiar oraciones</button></div>' +
     '<p class="msg" id="msg" role="status"></p>';
 }
 
@@ -634,7 +662,7 @@ function renderAll() {
   renderDays();
   renderDay();
   renderFab();
-  document.querySelector(".wrap").style.setProperty("--scale", SCALES[state.scale] ?? 1);
+  document.documentElement.style.setProperty("--scale", SCALES[state.scale] ?? 1);
   startEl.value = state.start;
 }
 
@@ -672,15 +700,6 @@ dayEl.addEventListener("click", (ev) => {
     if (r.glorias > 0) r.glorias--;
     save();
     renderAll();
-  } else if (action === "copy") {
-    const text = [SENAL, INICIAL, ROSA_1 + " " + ROSA_2, FINAL].join("\n\n");
-    const ok = () => msg("Oraciones copiadas.");
-    const fail = () => msg("No se pudo copiar. Selecciona el texto y cópialo.");
-    try {
-      navigator.clipboard.writeText(text).then(ok, fail);
-    } catch (e) {
-      fail();
-    }
   }
 });
 
@@ -701,6 +720,17 @@ $("bigger").addEventListener("click", () => {
   state.scale = Math.min(SCALES.length - 1, state.scale + 1);
   save();
   renderAll();
+});
+
+const SHARE_TITLE = "Novena a Santa Teresita del Niño Jesús";
+const SHARE_TEXT = "Te comparto esta novena a Santa Teresita del Niño Jesús para rezarla cada día:";
+const shareEl = $("share");
+const shareUrl = location.href.split("#")[0];
+shareEl.href = "https://wa.me/?text=" + encodeURIComponent(SHARE_TEXT + " " + shareUrl);
+shareEl.addEventListener("click", (ev) => {
+  if (!navigator.share) return; // the link opens WhatsApp
+  ev.preventDefault();
+  navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: shareUrl }).catch(() => {});
 });
 
 $("reset").addEventListener("click", (ev) => {
